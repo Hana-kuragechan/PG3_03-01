@@ -13,7 +13,7 @@ public:
 		if (a > b) {
 			return static_cast<Type1>(b);
 		}
-		else if (a < b) {
+		else {
 			return static_cast<Type1>(a);
 		}
 	}

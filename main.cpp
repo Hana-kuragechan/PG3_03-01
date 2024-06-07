@@ -1,36 +1,38 @@
 ﻿#include<stdio.h>
-#include<list>
-#include<vector>
+
+template<typename Type>
+class Number
+{
+public:
+	Type a;
+	Type b;
+
+	Number(Type a, Type b) :a(a), b(b) {};
+
+	Type Min() {
+		if (a > b) {
+			return static_cast<Type>(b);
+		}
+		else if (a < b) {
+			return static_cast<Type>(a);
+		}
+	}
+private:
+
+};
+
+
 int main() {
-	std::list<const char*>lst{ 
-		"Tokyo","Kanda","Akihabara","Okachimachi","Ueno","Uguisudani","Nippori","Tabata","Komagome"
-		"Sugamo","Otuka","Ikebukuro","Mejiro","Takadanobaba","Shin-Okubo","Shinjuku","Yoyogi","Harajuku","Shibuya",
-		"Ebisu","Meguro","Gotanda","Osaki","Shinagawa","Tamachi","Hamamatsucho","Shimbashi","Yurakucho"
-	};
+	
+	///int型
+	Number<int>num1(10, 20);
+	///float型
+	Number<float>num2(8.2f, 3.3f);
+	///double型
+	Number<float>num3(10.2, 6.7);
 
-	printf("1970年以前の駅\n");
-	for (auto itr = lst.begin(); itr != lst.end(); ++itr) {
-		
-		printf("%s", *itr);
-	}
-
-	printf("\n1970年の駅\n");
-	for (auto itr = lst.begin();  itr !=lst.end(); ++itr) {
-		if (*itr == "Tabata") {
-			itr = lst.insert(itr, "Nishi-Nippori");
-			printf("%s", *itr);
-			++itr;
-		}
-		printf("%s", *itr);
-	}
-	printf("\n2020年の駅\n");
-	for (auto itr = lst.begin(); itr != lst.end(); ++itr) {
-		if (*itr == "Tamachi") {
-			itr = lst.insert(itr, "Takanawa Gateway");
-			printf("%s", *itr);
-			++itr;
-		}
-		printf("%s", *itr);
-	}
+	printf("%d\n", num1.Min());
+	printf("%f\n", num2.Min());
+	printf("%lf\n", num3.Min());
 	return 0;
 }
